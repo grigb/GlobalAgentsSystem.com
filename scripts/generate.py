@@ -156,6 +156,33 @@ def get_priority_seeds() -> Dict[str, Any]:
                 "tagline": "Behavioral Governance at Scale",
                 "thr_tier": 4,
             },
+            # Project Simulatio
+            {
+                "id": "product-simulatio",
+                "path": "/platform/research/simulatio",
+                "type": "product",
+                "title": "Project Simulatio",
+                "tagline": "High-Fidelity World Simulation",
+                "thr_tier": 4,
+            },
+            # Project Lightning
+            {
+                "id": "product-lightning",
+                "path": "/platform/research/lightning",
+                "type": "product",
+                "title": "Project Lightning",
+                "tagline": "Predictive Creative Energy",
+                "thr_tier": 3,
+            },
+            # Project Jettison
+            {
+                "id": "product-jettison",
+                "path": "/solutions/sustainability/jettison",
+                "type": "product",
+                "title": "Project Jettison",
+                "tagline": "Orbital Waste Management",
+                "thr_tier": 2,
+            },
         ],
         "executives": [
             {

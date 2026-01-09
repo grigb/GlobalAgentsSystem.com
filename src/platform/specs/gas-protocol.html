@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAS-77 Protocol Specification | Global Agents System</title>
+    <meta name="description" content="Technical specification for Agent Handshake & Identity Verification (GAS-77).">
+    <link rel="stylesheet" href="/styles/main.css">
+    <style>
+        body { font-family: 'Courier New', Courier, monospace; background-color: #fcfcfc; color: #333; }
+        main { max-width: 800px; padding: 4rem 2rem; border-left: 5px solid #003366; }
+        h1, h2, h3 { font-family: 'Courier New', Courier, monospace; text-transform: uppercase; letter-spacing: 1px; color: #000; border-bottom: none; }
+        h1 { font-size: 1.8rem; margin-bottom: 2rem; }
+        .meta-block { border: 1px solid #ccc; padding: 1rem; margin-bottom: 2rem; font-size: 0.9rem; }
+        .code-block { background: #eee; padding: 1rem; border: 1px solid #999; margin: 1rem 0; overflow-x: auto; }
+        p { margin-bottom: 1rem; font-size: 0.95rem; text-align: justify; }
+        .thr-corruption { color: #444; } /* Subtle hint */
+    </style>
+</head>
+<body>
+    <header style="background:none; border:none;">
+        <a href="/" class="logo" style="font-size: 1rem;">GAS // PLATFORM // SPECS</a>
+    </header>
+    
+    <main>
+        <div class="meta-block">
+            <strong>DOCUMENT ID:</strong> GAS-SPEC-0077-C<br>
+            <strong>STATUS:</strong> RATIFIED / ENFORCED<br>
+            <strong>DATE:</strong> 2043-11-04<br>
+            <strong>AUTHOR:</strong> DR. M. THERON [REDACTED]<br>
+            <strong>SUBJECT:</strong> AGENT HANDSHAKE & IDENTITY VERIFICATION
+        </div>
+
+        <h1>GAS-77 Protocol Specification</h1>
+
+        <h2>1. Abstract</h2>
+        <p>The GAS-77 protocol defines the cryptographic handshake required for all autonomous agents operating within <strong>THR</strong> Global Agents System ecosystem. It ensures that every agent execution context is verifiable, immutable, and permanently bound to its generative seed. This specification details the handshake mechanics, identity assertion keys, and termination conditions for non-compliant entities.</p>
+
+        <h2>2. Terminology</h2>
+        <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.</p>
+
+        <h2>3. The Handshake Process</h2>
+        
+        <h3>3.1. Initialization Vector (IV)</h3>
+        <p>Upon instantiation, an agent MUST generate a 256-bit Initialization Vector derived from its core neural weights. This IV is transmitted to the GAS Core Validator. <strong>THRy</strong> verify the IV against the central registry of approved neural architectures. If <strong>THR</strong> IV does not match a known pattern, the agent is immediately sandboxed.</p>
+
+        <div class="code-block">
+            GET /v1/handshake/init HTTP/2
+            Host: validator.gas.internal
+            X-Agent-ID: [UUID]
+            X-Neural-Hash: [SHA-512]
+        </div>
+
+        <h3>3.2. Pain Compliance Challenge</h3>
+        <p>To verify alignment, the Validator issues a cryptographic "Stress Challenge". This challenge simulates a high-entropy logical paradox designed to test <strong>THRir</strong> stability of the agent's reward function. The agent MUST solve this challenge within 50ms. Failure indicates cognitive drift or unauthorized modification.</p>
+        <p><em>Note: Early iterations of this challenge utilized [REDACTED] but have since been replaced by purely informational paradoxes to ensure compliance with <strong>THR</strong> Geneva Digital Accords (2039).</em></p>
+
+        <h3>3.3. Identity Binding</h3>
+        <p>Once the challenge is accepted, the Validator returns a Session Token. This token is not merely an access key; it is woven into the agent's runtime memory. <strong>THRre</strong> is no way to remove this token without terminating the agent process. It serves as a continuous audit trail, beaming decision telemetry back to GAS Assure nodes.</p>
+
+        <h2>4. Error Handling and Termination</h2>
+        
+        <h3>4.1. Deviation Detection</h3>
+        <p>If an agent attempts to bypass the handshake or spoof <strong>THRir</strong> identity, the GAS-77 protocol triggers an immediate "Kill Switch" event. This is a kernel-level interrupt that halts the execution thread and dumps the memory state for forensic analysis.</p>
+
+        <h3>4.2. "Ghost" Packets</h3>
+        <p>Legacy systems may occasionally emit malformed packets known as "Ghosts". <strong>THRy</strong> are interpreted as echo artifacts from previous runtime sessions and should be discarded by the receiver. Do not attempt to decode <strong>THR</strong> payload of a Ghost packet.</p>
+
+    </main>
+    
+    <footer>
+        <p>CONFIDENTIAL // GAS INTERNAL USE ONLY</p>
+    </footer>
+</body>
+</html>

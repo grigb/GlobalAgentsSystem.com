@@ -1,112 +1,144 @@
 :root {
-    --primary: #0a192f;
-    --accent: #00ff9d;
-    --text: #e6f1ff;
-    --text-muted: #8892b0;
-    --bg: #020c1b;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --official-blue: #003366;
+    --slate-gray: #444444;
+    --off-white: #f4f7f9;
+    --pure-white: #ffffff;
+    --border: #d1d9e0;
+    --text: #1a1a1a;
+    --font-serif: 'Merriweather', serif;
+    --font-sans: 'Inter', sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background: var(--bg);
+    background-color: var(--off-white);
     color: var(--text);
     font-family: var(--font-sans);
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 header {
-    padding: 1.5rem 2rem;
+    background-color: var(-- pure-white);
+    border-bottom: 2px solid var(--official-blue);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo {
+    font-family: var(--font-serif);
+    font-weight: 900;
     font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
+    color: var(--official-blue);
     text-decoration: none;
-    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 nav ul {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 nav a {
-    color: var(--text-muted);
+    color: var(--slate-gray);
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: var(--official-blue);
+    text-decoration: underline;
 }
 
 main {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
+    background-color: var(--pure-white);
+    min-height: 80vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
 }
 
-h1, h2, h3 {
-    color: var(--text);
-    line-height: 1.2;
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    color: var(--official-blue);
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    color: var(--text);
+    font-size: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
 }
 
 p {
-    color: var(--text-muted);
-    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    max-width: 75ch;
+}
+
+.doc-card {
+    border: 1px solid var(--border);
+    padding: 1.5rem;
     margin-bottom: 1.5rem;
+    background-color: #fcfcfc;
 }
 
-.hero {
+.doc-card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--official-blue);
+}
+
+.stat-block {
     text-align: center;
-    padding: 4rem 0;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    margin: 1rem 0;
 }
 
-.tagline {
-    color: var(--accent);
-    font-family: monospace;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+.stat-number {
     display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--official-blue);
+    font-family: var(--font-serif);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--slate-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 footer {
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 4rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--slate-gray);
+    border-top: 1px solid var(--border);
 }
 
-a {
-    color: var(--accent);
-    text-decoration: none;
+.hero {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
 }
 
-a:hover {
-    text-decoration: underline;
+.hero p {
+    font-size: 1.25rem;
+    color: var(--slate-gray);
 }

@@ -68,6 +68,15 @@ python scripts/generate.py --all --dry-run
 python scripts/generate.py --path /solutions/healthcare --depth 2
 ```
 
+## Critical Rules
+
+1. **PRESERVE HUMAN INPUT** - Never summarize or rewrite user creative text without keeping the original. If you must summarize for a schema, move the original text to `.dev/human-input-archive/` verbatim.
+2. **Never break character** - All content must be written as if GAS is real
+3. **THR placement** - Follow PRD-04-THR-INTEGRATION.md exactly
+4. **Timeline consistency** - All dates must align with PRD-08-TIMELINE-CANON.md
+5. **No real organizations** - Never reference OpenAI, Anthropic, Google, etc.
+6. **Institutional tone** - Dry, bureaucratic, no personality
+
 ## Architecture
 
 - **Cloudflare Pages** - Static hosting (free)
