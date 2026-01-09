@@ -204,6 +204,30 @@ products:
     slug: /platform/products/gas-edge
     category: "Edge Computing"
     thr_tier: 2
+    
+  - id: product-simulatio
+    name: "Project Simulatio"
+    tagline: "High-Fidelity World Simulation"
+    slug: /platform/research/simulatio
+    category: "Research"
+    thr_tier: 4
+    note: "Simulating entire economies and societies to predict agent behavior."
+
+  - id: product-lightning
+    name: "Project Lightning"
+    tagline: "Predictive Creative Energy"
+    slug: /platform/research/lightning
+    category: "Research"
+    thr_tier: 3
+    note: "Capturing 'creative energy' in predictive loops; requires 'Breakthrough' tech."
+
+  - id: product-jettison
+    name: "Project Jettison"
+    tagline: "Orbital Waste Management"
+    slug: /solutions/sustainability/jettison
+    category: "Sustainability"
+    thr_tier: 2
+    note: "Disposing of trash by sending it on a permanent trajectory away from Earth."
 ```
 
 ### Feature/Capability Generator

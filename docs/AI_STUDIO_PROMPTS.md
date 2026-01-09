@@ -100,6 +100,23 @@ Context: A dense technical document about the communication protocol between age
 
 ---
 
+## 6. Special Projects (New Lore)
+*Prompt for `src/research/index.html`*
+
+```text
+Generate `src/research/index.html`.
+Context: Overview of our "Cutting Edge" research divisions.
+- H1: "Advanced Research Initiatives"
+- List 3 key projects:
+  1. "Project Simulatio": World-scale simulation for predictive modeling. (Hint: It simulates *us*).
+  2. "Project Lightning": Capturing "creative energy" in predictive loops. (Vague, proprietary).
+  3. "Project Jettison": Orbital logistics for waste management. (Sending trash to deep space).
+- Tone: Extremely secretive but "excited about the future".
+- THR density: High (Tier 3-4).
+```
+
+---
+
 ## Handoff Instructions
 Once you (the agent/user) have generated these codes:
 1. Create the files in your local `src/` directory.
