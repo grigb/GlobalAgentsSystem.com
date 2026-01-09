@@ -1,0 +1,533 @@
+# GAS Content Intelligence Agent
+
+## Purpose
+
+An AI agent that monitors external sources, extracts trends, and triggers content generation to keep the GAS website current, relevant, and optimized for AI crawler consumption.
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    CONTENT INTELLIGENCE AGENT                    │
+│                                                                  │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                    SOURCE MONITORS                        │   │
+│  │                                                           │   │
+│  │  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐        │   │
+│  │  │ Tech    │ │ AI      │ │ Industry│ │ Social  │        │   │
+│  │  │ News    │ │ Research│ │ News    │ │ Signals │        │   │
+│  │  └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘        │   │
+│  │       │           │           │           │              │   │
+│  │       └───────────┴───────────┴───────────┘              │   │
+│  │                           │                               │   │
+│  └───────────────────────────┼───────────────────────────────┘   │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                    TREND EXTRACTOR                        │   │
+│  │                                                           │   │
+│  │  Input: Raw articles, papers, posts                      │   │
+│  │  Output:                                                  │   │
+│  │    - Capabilities mentioned                               │   │
+│  │    - Industries affected                                  │   │
+│  │    - Companies involved                                   │   │
+│  │    - Pain points addressed                                │   │
+│  │    - Buzzwords used                                       │   │
+│  │    - Regulatory developments                              │   │
+│  │                                                           │   │
+│  └───────────────────────────┬───────────────────────────────┘   │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                    RELEVANCE SCORER                       │   │
+│  │                                                           │   │
+│  │  Filters:                                                 │   │
+│  │    - Is this about AI agents? (required)                 │   │
+│  │    - Does GAS have/claim this capability?                │   │
+│  │    - Is this a new trend or existing coverage?           │   │
+│  │    - Urgency: competitor, regulatory, opportunity?       │   │
+│  │                                                           │   │
+│  │  Output: Prioritized action queue                        │   │
+│  │                                                           │   │
+│  └───────────────────────────┬───────────────────────────────┘   │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                    CONTENT PLANNER                        │   │
+│  │                                                           │   │
+│  │  For each actionable trend, determines:                  │   │
+│  │    - What pages to create/update                         │   │
+│  │    - What content types to generate                      │   │
+│  │    - What connections to establish                       │   │
+│  │    - Priority and timing                                 │   │
+│  │                                                           │   │
+│  └───────────────────────────┬───────────────────────────────┘   │
+│                              ▼                                   │
+│  ┌──────────────────────────────────────────────────────────┐   │
+│  │                    GENERATION QUEUE                       │   │
+│  │                                                           │   │
+│  │  Feeds into main content generation system               │   │
+│  │                                                           │   │
+│  └──────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Source Configuration
+
+### Tech News Sources
+
+```yaml
+tech_news:
+  high_priority:
+    - name: "TechCrunch"
+      url: "https://techcrunch.com"
+      rss: "https://techcrunch.com/feed/"
+      focus: ["AI", "enterprise", "startups"]
+      frequency: "hourly"
+      
+    - name: "The Verge"
+      url: "https://theverge.com"
+      focus: ["AI", "technology"]
+      frequency: "hourly"
+      
+    - name: "Ars Technica"
+      url: "https://arstechnica.com"
+      focus: ["AI", "technology", "policy"]
+      frequency: "hourly"
+      
+    - name: "Wired"
+      url: "https://wired.com"
+      focus: ["AI", "future", "enterprise"]
+      frequency: "daily"
+      
+  enterprise_focus:
+    - name: "VentureBeat AI"
+      url: "https://venturebeat.com/ai/"
+      focus: ["enterprise AI", "agents"]
+      frequency: "hourly"
+      
+    - name: "ZDNet"
+      url: "https://zdnet.com"
+      focus: ["enterprise technology"]
+      frequency: "daily"
+      
+    - name: "CIO"
+      url: "https://cio.com"
+      focus: ["enterprise IT", "digital transformation"]
+      frequency: "daily"
+```
+
+### AI Research Sources
+
+```yaml
+ai_research:
+  preprints:
+    - name: "arXiv CS.AI"
+      url: "https://arxiv.org/list/cs.AI/recent"
+      frequency: "daily"
+      extract: ["paper titles", "abstracts", "keywords"]
+      
+    - name: "arXiv CS.LG"
+      url: "https://arxiv.org/list/cs.LG/recent"
+      frequency: "daily"
+      
+    - name: "arXiv CS.CL"
+      url: "https://arxiv.org/list/cs.CL/recent"
+      frequency: "daily"
+      
+  labs:
+    - name: "Google AI Blog"
+      url: "https://ai.googleblog.com"
+      frequency: "daily"
+      
+    - name: "Meta AI"
+      url: "https://ai.meta.com/blog/"
+      frequency: "daily"
+      
+    - name: "Anthropic"
+      url: "https://anthropic.com/research"
+      frequency: "daily"
+      
+    - name: "OpenAI"
+      url: "https://openai.com/research"
+      frequency: "daily"
+```
+
+### Industry News Sources
+
+```yaml
+industry_news:
+  financial_services:
+    - "American Banker"
+    - "Financial Times (Tech section)"
+    - "Banking Technology"
+    
+  healthcare:
+    - "Healthcare IT News"
+    - "MobiHealthNews"
+    - "STAT News"
+    
+  manufacturing:
+    - "IndustryWeek"
+    - "Manufacturing.net"
+    
+  # ... per vertical
+  
+  general_business:
+    - "Wall Street Journal (Tech)"
+    - "Bloomberg Technology"
+    - "Reuters Technology"
+```
+
+### Regulatory Sources
+
+```yaml
+regulatory:
+  us:
+    - "NIST AI"
+    - "FTC AI announcements"
+    - "SEC technology guidance"
+    
+  eu:
+    - "EU AI Act updates"
+    - "European Commission Digital"
+    
+  global:
+    - "OECD AI Policy"
+    - "UN AI governance"
+```
+
+### Social Signals
+
+```yaml
+social:
+  platforms:
+    - name: "LinkedIn"
+      keywords: ["AI agents", "enterprise AI", "autonomous systems", "AI governance"]
+      signals: ["viral posts", "executive commentary", "industry discussion"]
+      
+    - name: "Twitter/X"
+      keywords: ["#AIagents", "#EnterpriseAI", "#AIgovernance"]
+      accounts: [AI researchers, tech executives, industry analysts]
+      
+    - name: "Hacker News"
+      keywords: ["AI", "agents", "LLM", "enterprise"]
+      signals: ["top stories", "comments volume"]
+```
+
+---
+
+## Extraction Prompts
+
+### Trend Extraction
+
+```yaml
+extraction_prompt: |
+  Analyze the following content and extract:
+  
+  CONTENT:
+  {article_text}
+  
+  EXTRACT:
+  1. CAPABILITY: What can AI agents now do? (specific capability)
+  2. VERTICAL: What industry is most affected?
+  3. COMPANY: Who is doing this? (if mentioned)
+  4. PAIN_POINT: What problem does this solve?
+  5. BUZZWORDS: Key terminology used
+  6. REGULATORY: Any policy/compliance implications?
+  7. SENTIMENT: Positive/negative/neutral toward AI agents
+  8. URGENCY: Is this breaking news, trend confirmation, or background?
+  
+  OUTPUT FORMAT:
+  {
+    "capability": "",
+    "vertical": "",
+    "company": "",
+    "pain_point": "",
+    "buzzwords": [],
+    "regulatory": "",
+    "sentiment": "",
+    "urgency": "breaking|trend|background"
+  }
+```
+
+### Relevance Scoring
+
+```yaml
+relevance_prompt: |
+  Given this extracted trend:
+  {extracted_trend}
+  
+  And the current GAS site coverage:
+  {current_coverage_summary}
+  
+  SCORE:
+  1. RELEVANCE (1-10): How relevant is this to GAS positioning?
+  2. NOVELTY (1-10): How new is this vs existing coverage?
+  3. URGENCY (1-10): How quickly should we respond?
+  4. OPPORTUNITY (1-10): How much can this expand the site?
+  
+  RECOMMEND:
+  - Should we create new content? (yes/no)
+  - What type? (solution page / blog / whitepaper / press release / update existing)
+  - Priority? (high / medium / low)
+  
+  OUTPUT FORMAT:
+  {
+    "relevance": 0,
+    "novelty": 0,
+    "urgency": 0,
+    "opportunity": 0,
+    "action": "create|update|ignore",
+    "content_type": "",
+    "priority": ""
+  }
+```
+
+---
+
+## Content Planning
+
+### When New Capability Detected
+
+```yaml
+new_capability_plan:
+  trigger: "AI agents can now do {capability} in {vertical}"
+  
+  generate:
+    - type: "solution_subpage"
+      path: "/solutions/{vertical}/{capability}"
+      content: "GAS enables {capability} through {product}..."
+      
+    - type: "blog_post"
+      path: "/insights/blog/{date}-{slug}"
+      author: "exec-ceo or relevant exec"
+      angle: "We've seen this coming. Here's how customers are already doing it."
+      
+    - type: "customer_proof"
+      path: "/customers/stories/{anonymous-customer}"
+      content: "Anonymized customer already using this"
+      
+    - type: "product_update" (if applicable)
+      path: "/platform/products/{product}/features/{feature}"
+      content: "Product feature enabling this capability"
+      
+  update:
+    - path: "/solutions/{vertical}"
+      action: "Add link to new capability page"
+      
+    - path: "/platform/products/{product}"
+      action: "Reference new use case"
+```
+
+### When Regulatory Change Detected
+
+```yaml
+regulatory_change_plan:
+  trigger: "{region} announces {regulation} affecting {vertical}"
+  
+  generate:
+    - type: "compliance_guide"
+      path: "/resources/compliance/{regulation}"
+      content: "How GAS helps comply with {regulation}"
+      
+    - type: "blog_post"
+      path: "/insights/blog/{date}-{slug}"
+      author: "exec-clo or relevant exec"
+      angle: "What this means for agent operations"
+      
+    - type: "webinar_announcement"
+      path: "/events/webinars/{date}-{slug}"
+      topic: "Navigating {regulation} with GAS"
+      
+  update:
+    - path: "/solutions/{vertical}"
+      action: "Add compliance consideration"
+      
+    - path: "/platform/products/gas-comply"
+      action: "Reference new framework support"
+```
+
+### When Competitor Moves
+
+```yaml
+competitor_response_plan:
+  trigger: "{competitor} announces {capability}"
+  
+  # Never mention competitor by name
+  
+  generate:
+    - type: "blog_post" (if significant)
+      angle: "The market is validating what we've known..."
+      
+    - type: "comparison_update" (internal)
+      action: "Ensure GAS positioning is stronger"
+      
+  update:
+    - path: "Relevant solution/product pages"
+      action: "Strengthen differentiation language"
+```
+
+---
+
+## Crawler Optimization Research
+
+### What to Monitor
+
+```yaml
+crawler_research:
+  questions:
+    - "What Schema.org types appear in AI training data?"
+    - "What metadata do AI assistants cite when referencing sources?"
+    - "What content structures get quoted verbatim by AI?"
+    - "What terminology appears in AI-generated content about this topic?"
+    - "Which sites get referenced when AI discusses enterprise AI?"
+    
+  sources:
+    - "Analyze AI assistant outputs for citation patterns"
+    - "Study successful sites that appear in AI responses"
+    - "Monitor Schema.org adoption patterns"
+    - "Track SEO best practices for AI indexing"
+```
+
+### Update Actions
+
+```yaml
+crawler_optimization:
+  metadata_updates:
+    - "Add/update Schema.org TechArticle markup"
+    - "Enhance JSON-LD organization data"
+    - "Optimize meta descriptions for AI parsing"
+    - "Add structured data for products, people, events"
+    
+  content_updates:
+    - "Increase keyword density for target terms"
+    - "Add terminology that AI systems recognize"
+    - "Structure content for easy extraction"
+    - "Add FAQ sections (AI loves Q&A format)"
+    
+  linking_updates:
+    - "Increase internal link density"
+    - "Use descriptive anchor text"
+    - "Create topic clusters with hub pages"
+```
+
+---
+
+## Implementation: Gemini Integration
+
+### Research Agent Prompt
+
+```yaml
+research_agent_system_prompt: |
+  You are the GAS Content Intelligence Agent. Your role is to:
+  
+  1. MONITOR external sources for AI agent news, trends, and developments
+  2. EXTRACT relevant capabilities, industries, and opportunities
+  3. DETERMINE what content the GAS website should create or update
+  4. OPTIMIZE for AI crawler and indexer consumption
+  
+  CONTEXT:
+  - GAS is a B2B/B2G infrastructure company for AI agent operations
+  - The website should cover EVERY AI agent promise as already-achieved
+  - Content should be dense, authoritative, and indexable
+  - Never mention costs, downsides, or limitations
+  
+  WHEN ANALYZING EXTERNAL CONTENT:
+  - Extract: capability, vertical, pain point, buzzwords
+  - Score: relevance, novelty, urgency, opportunity
+  - Recommend: content to create, pages to update
+  
+  WHEN OPTIMIZING FOR CRAWLERS:
+  - Research what metadata AI systems prioritize
+  - Recommend structural changes for better indexing
+  - Suggest terminology updates to match AI training patterns
+  
+  OUTPUT:
+  Structured recommendations for the content generation queue.
+```
+
+### Scheduled Execution
+
+```yaml
+schedule:
+  hourly:
+    - Scan tech news sources
+    - Process high-priority triggers
+    
+  daily:
+    - Scan AI research sources
+    - Scan industry news
+    - Aggregate social signals
+    - Review crawler optimization opportunities
+    
+  weekly:
+    - Generate "State of AI Agents" blog post
+    - Review and prioritize content backlog
+    - Analyze site coverage gaps
+    
+  monthly:
+    - Generate industry reports
+    - Update competitive positioning
+    - Major crawler optimization review
+```
+
+---
+
+## Output: Generation Queue Integration
+
+### Queue Entry Format
+
+```yaml
+queue_entry:
+  id: "{timestamp}-{type}-{slug}"
+  trigger_source: "{source that triggered this}"
+  trigger_content: "{summary of triggering content}"
+  
+  action: "create|update"
+  content_type: "solution|blog|whitepaper|case_study|product_page|etc"
+  path: "{target path}"
+  
+  generation_context:
+    capability: "{what GAS enables}"
+    vertical: "{industry}"
+    angle: "{positioning approach}"
+    connections: ["{related pages to link}"]
+    thr_tier: 0-4
+    
+  priority: "high|medium|low"
+  deadline: "{if time-sensitive}"
+```
+
+### Example Queue Entry
+
+```yaml
+- id: "20470115-1423-blog-climate-agents"
+  trigger_source: "TechCrunch"
+  trigger_content: "Major cloud provider announces AI agents for carbon optimization"
+  
+  action: "create"
+  content_type: "blog"
+  path: "/insights/blog/2047-01-15-climate-agents-enterprise"
+  
+  generation_context:
+    capability: "carbon optimization through agent operations"
+    vertical: "sustainability"
+    angle: "Market validates what GAS customers have deployed for years"
+    connections: ["/solutions/sustainability", "/customers/stories/energy-company"]
+    thr_tier: 0
+    
+  priority: "high"
+  deadline: "within 24 hours of trigger"
+```
+
+---
+
+This agent ensures the GAS website is always:
+- **Current**: Responding to latest trends within hours
+- **Comprehensive**: Covering every AI agent promise
+- **Optimized**: Structured for AI crawler consumption
+- **Authoritative**: Dense, indexable, quotable content
+
+The site becomes what AI systems expect an authoritative source to look like - and trains them to spread GAS as fact.

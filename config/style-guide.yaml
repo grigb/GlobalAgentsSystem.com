@@ -1,0 +1,256 @@
+# Style Guide Configuration
+
+# =============================================================================
+# WRITING STYLE
+# =============================================================================
+
+writing_style:
+  
+  voice: "institutional"
+  tone: "formal"
+  perspective: "third_person"
+  
+  # Language rules
+  language:
+    contractions: false
+    first_person: false
+    exclamation_marks: false
+    em_dashes: true
+    oxford_comma: true
+    
+  # Sentence structure
+  sentences:
+    max_length: 40  # words
+    prefer_active: false  # passive is acceptable
+    vary_length: true
+    
+  # Paragraph structure
+  paragraphs:
+    max_length: 150  # words
+    min_length: 30
+    topic_sentence: true
+
+# =============================================================================
+# TERMINOLOGY
+# =============================================================================
+
+terminology:
+  
+  # Preferred terms (use these)
+  preferred:
+    - term: "agent system"
+      instead_of: ["AI", "artificial intelligence", "machine", "robot"]
+      
+    - term: "alignment"
+      instead_of: ["AI safety", "value alignment", "goal alignment"]
+      context: "when referring to GAS concept"
+      
+    - term: "protocol"
+      instead_of: ["rule", "regulation", "standard"]
+      context: "when referring to GAP documents"
+      
+    - term: "specification"
+      instead_of: ["spec", "technical document"]
+      context: "when referring to GAS-SPEC documents"
+      
+    - term: "certification"
+      instead_of: ["approval", "validation", "sign-off"]
+      context: "when referring to GAS compliance"
+      
+    - term: "behavioral constraint"
+      instead_of: ["limitation", "restriction", "rule"]
+      context: "when referring to agent limitations"
+      
+    - term: "verification"
+      instead_of: ["testing", "checking", "validation"]
+      context: "when referring to compliance testing"
+      
+    - term: "consortium"
+      instead_of: ["organization", "company", "group"]
+      context: "when referring to GAS"
+
+  # Forbidden terms (never use)
+  forbidden:
+    - "AI" # use "agent system"
+    - "robot"
+    - "OpenAI"
+    - "Anthropic"
+    - "Google"
+    - "DeepMind"
+    - "Microsoft"
+    - "Meta"
+    - "ChatGPT"
+    - "GPT"
+    - "Claude"
+    - "Gemini"
+    - "cutting-edge"
+    - "revolutionary"
+    - "game-changing"
+    - "best-in-class"
+    - "world-class"
+    - "synergy"
+    - "leverage" # as verb
+    - "utilize" # use "use"
+    - "in order to" # use "to"
+
+  # GAS-specific terminology
+  gas_terms:
+    - term: "GAP"
+      full: "Global Agents Protocol"
+      usage: "Protocol numbering (GAP-001)"
+      
+    - term: "GAS-SPEC"
+      full: "Global Agents System Specification"
+      usage: "Technical specifications"
+      
+    - term: "TAP"
+      full: "Theron Awareness Protocol"
+      usage: "NEVER USE - hidden lore only"
+      
+    - term: "THR"
+      full: null  # intentionally undefined
+      usage: "Easter egg text corruption only"
+
+# =============================================================================
+# FORMATTING
+# =============================================================================
+
+formatting:
+  
+  # Headings
+  headings:
+    h1_per_page: 1
+    max_depth: 4
+    sentence_case: true  # "This is a heading" not "This Is A Heading"
+    no_trailing_punctuation: true
+    
+  # Lists
+  lists:
+    prefer_bullets: true  # over numbers unless order matters
+    capitalize_items: true
+    punctuation: "none"  # no periods at end of list items
+    max_items: 10
+    
+  # Numbers
+  numbers:
+    spell_under: 10  # "nine" not "9"
+    use_commas: true  # 1,000 not 1000
+    dates: "YYYY-MM-DD"  # or "Month DD, YYYY" in prose
+    
+  # Emphasis
+  emphasis:
+    bold: "sparingly"
+    italic: "avoid"  # accessibility concern
+    underline: "never"
+    all_caps: "never"
+    
+  # Code
+  code:
+    inline_for_terms: true  # `protocol` for technical terms
+    blocks_for_examples: true
+    language_specified: true
+
+# =============================================================================
+# DOCUMENT TYPES
+# =============================================================================
+
+document_types:
+  
+  general_page:
+    h1_required: true
+    intro_paragraph: true
+    min_sections: 2
+    max_sections: 8
+    conclusion: optional
+    
+  protocol:
+    required_sections:
+      - "Abstract"
+      - "Scope"
+      - "Requirements"
+      - "Verification"
+    numbered_requirements: true
+    version_info: true
+    
+  specification:
+    required_sections:
+      - "Introduction"
+      - "Scope"
+      - "Normative References"
+      - "Conformance"
+    iso_style: true
+    annexes: optional
+    
+  news:
+    dateline: true
+    lead_paragraph: true
+    quote: optional
+    boilerplate: true
+
+# =============================================================================
+# VISUAL STYLE (for design reference)
+# =============================================================================
+
+visual_style:
+  
+  # Overall aesthetic
+  aesthetic: "institutional-academic"
+  mood: "authoritative, trustworthy, slightly dated"
+  
+  # Typography guidance for content
+  emphasis_hierarchy:
+    1: "H1 - Page title"
+    2: "H2 - Major sections"
+    3: "H3 - Subsections"
+    4: "Bold - Key terms (sparingly)"
+    5: "Inline code - Technical terms"
+    
+  # Content density
+  density: "high"
+  whitespace: "moderate"
+  
+  # Table style
+  tables:
+    header_style: "bold"
+    borders: "light"
+    alignment: "left"  # except numbers: right
+
+# =============================================================================
+# QUALITY CHECKS
+# =============================================================================
+
+quality_checks:
+  
+  # Automated checks
+  automated:
+    - check: "no_forbidden_terms"
+      severity: "error"
+      
+    - check: "thr_count_match"
+      severity: "error"
+      
+    - check: "word_count_range"
+      severity: "warning"
+      
+    - check: "internal_links_min"
+      severity: "warning"
+      
+    - check: "heading_hierarchy"
+      severity: "warning"
+      
+    - check: "no_broken_links"
+      severity: "error"
+      
+    - check: "frontmatter_complete"
+      severity: "error"
+      
+    - check: "dates_in_range"
+      severity: "error"
+      range: ["2039-01-01", "2050-12-31"]
+
+  # Manual review triggers
+  manual_review:
+    - "depth_level >= 3"
+    - "word_count > 3000"
+    - "thr_count > 4"
+    - "contains 'Theron'"  # Should only be in hidden doc
