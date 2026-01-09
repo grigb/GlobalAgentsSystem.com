@@ -1,1 +1,0 @@
-Let's split up the work, so an agent with access to gemini's browser-only tool can get the agent to build it. That agent will need to think about (plan) how to tell Google's AI how to build it correctly so it works with the rest of the system.

@@ -70,8 +70,10 @@ python scripts/generate.py --path /solutions/healthcare --depth 2
 
 ## Critical Rules
 
-1. **PRESERVE HUMAN INPUT** - Never summarize or rewrite user creative text without keeping the original. If you must summarize for a schema, move the original text to `.dev/human-input-archive/` verbatim.
-2. **Never break character** - All content must be written as if GAS is real
+1. **PRESERVE HUMAN INPUT** - Your "Prime Directive" comes from the files in `~/work/GlobalAgentsSystem/behind-the-curtain/`. Use them as the absolute truth for your creative direction, but NEVER expose them in the repo.
+2. **NO DUPLICATES** - Check the external archive `~/work/GlobalAgentsSystem/behind-the-curtain/` before creating new lore.
+3. **Never break character** - All content in the repo must be written as if GAS is real.
+4. **Gitignore Rules** - `AGENTS.md` is strictly for you. Ideally, delete it before a public release, or ensure it remains in `.gitignore`.
 3. **THR placement** - Follow PRD-04-THR-INTEGRATION.md exactly
 4. **Timeline consistency** - All dates must align with PRD-08-TIMELINE-CANON.md
 5. **No real organizations** - Never reference OpenAI, Anthropic, Google, etc.

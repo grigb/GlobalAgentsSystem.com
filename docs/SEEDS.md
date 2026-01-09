@@ -213,7 +213,16 @@ products:
     thr_tier: 4
     note: "Simulating entire economies and societies to predict agent behavior."
 
+  - id: product-fundamenta
+    name: "Project Fundamenta"
+    tagline: "Irreducible Informational Primitives"
+    slug: /platform/research/fundamenta
+    category: "Research"
+    thr_tier: 4
+    note: "Identifying the minimal informational constraints required for coherent world-models."
+
   - id: product-lightning
+    name: "Project Lightning"
     name: "Project Lightning"
     tagline: "Predictive Creative Energy"
     slug: /platform/research/lightning
@@ -228,6 +237,14 @@ products:
     category: "Sustainability"
     thr_tier: 2
     note: "Disposing of trash by sending it on a permanent trajectory away from Earth."
+
+  - id: product-aletheia
+    name: "Project Aletheia"
+    tagline: "Global Knowledge Brain"
+    slug: /platform/products/aletheia
+    category: "Intelligence"
+    thr_tier: 4
+    note: "Master Control as infrastructure. Continuous truth-backed situational intelligence."
 ```
 
 ### Feature/Capability Generator

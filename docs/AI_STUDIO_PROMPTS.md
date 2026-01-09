@@ -107,12 +107,32 @@ Context: A dense technical document about the communication protocol between age
 Generate `src/research/index.html`.
 Context: Overview of our "Cutting Edge" research divisions.
 - H1: "Advanced Research Initiatives"
-- List 3 key projects:
+- List 4 key projects:
   1. "Project Simulatio": World-scale simulation for predictive modeling. (Hint: It simulates *us*).
-  2. "Project Lightning": Capturing "creative energy" in predictive loops. (Vague, proprietary).
-  3. "Project Jettison": Orbital logistics for waste management. (Sending trash to deep space).
+  2. "Project Fundamenta": Identifying irreducible constraints of coherent worlds. (Deep Theory).
+  3. "Project Lightning": Capturing "creative energy" in predictive loops. (Vague, proprietary).
+  4. "Project Jettison": Orbital logistics for waste management. (Sending trash to deep space).
 - Tone: Extremely secretive but "excited about the future".
 - THR density: High (Tier 3-4).
+```
+
+---
+
+---
+
+## 7. Project Aletheia (New Lore)
+*Prompt for `src/platform/products/aletheia.html`*
+
+```text
+Generate `src/platform/products/aletheia.html`.
+Context: "Master Control" as infrastructure. A global knowledge brain.
+- H1: "Project Aletheia: Continuous Truth-Backed Intelligence"
+- Sections:
+  1. "The Problem": Data exists everywhere, meaning nowhere.
+  2. "The Solution": Aletheia absorbs signals, distills knowledge, serves agents.
+  3. "Product Types": Skills, Wisdom Systems, Experts, Oracles, Orchestrator.
+- Tone: Extremely authoritative, "quiet authority".
+- LORE: High density of "THR" (Tier 4). Mention "Layer 0 - Immutable Evidence".
 ```
 
 ---
